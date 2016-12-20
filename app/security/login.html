@@ -1,0 +1,18 @@
+<jnav></jnav>
+<div class="container">
+    <h1 ng-hide="login.loggedIn">Please Login</h1>
+    <h1 ng-show="login.loggedIn">Already Logged In</h1>
+
+    <button class="btn btn-primary"
+            ng-hide="login.loggedIn"
+            ng-click="login.facebookLogin()">
+        Facebook Login
+    </button>
+    <button class="btn btn-primary"
+            ng-hide="login.loggedIn"
+            ng-click="login.anonLogin()">
+        Anonymous Login
+    </button>
+
+    <div class="alert alert-danger" ng-show="!!login.errorMessage">{{ errorMessage }}</div>
+</div>

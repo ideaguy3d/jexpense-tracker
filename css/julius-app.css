@@ -1,0 +1,53 @@
+header {
+    margin-bottom: 50px;
+}
+
+.j-active {
+    font-weight: bold;
+    cursor: pointer;
+    border: solid cornflowerblue 2px;
+}
+
+.hover-delete {
+    transform: scale(1.2,1.2);
+    color: indianred;
+}
+
+.pointable {
+    cursor: pointer;
+}
+
+jnav {
+    margin-top: 50px;
+}
+
+.sub-nav {
+    margin-top: 52px;
+    background-color: #434343;
+    color: whitesmoke;
+    width: 160px;
+    float: right;
+}
+
+.sub-nav li {
+    cursor: pointer;
+    list-style: none;
+    margin: 12px;
+}
+
+.jwelcome #jwelcome{
+    display: inline;
+    padding-top: 4px;
+    font-weight: 800;
+    background-color: #333;
+}
+
+.jwelcome #jwelcome:hover {
+    color: cornflowerblue;
+}
+
+
+
+
+/*
+ *  */

@@ -1,0 +1,18 @@
+<div class="container">
+    <jnav></jnav>
+    <h1>User Preferences</h1>
+
+    <form class="form-inline">
+        <label for="displayName">Display Name</label>
+        <input type="text" id="displayName" placeholder="display name"
+               class="form-control" ng-model="$ctrl.userPrefs.displayName">
+        <br><br>
+        <label for="themeColor"></label>
+        <select name="themeColor" id="themeColor" ng-model="$ctrl.userPrefs.theme"
+                ng-options="theme for theme in $ctrl.themes" class="form-control">
+        </select>
+        <br><br>
+        <button class="btn btn-info btn-lg" ng-click="$ctrl.save()">Save</button>
+        <button class="btn btn-info btn-lg" ng-click="$ctrl.cancel()">Cancel</button>
+    </form>
+</div>

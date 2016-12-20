@@ -1,0 +1,22 @@
+{
+  "name": "jexpense-tracker-app",
+  "homepage": "julius3d.com",
+  "authors": [
+    "Julius Alvarado <angularjs.uiux@gmail.com>"
+  ],
+  "description": "an app to track expenses for a business",
+  "main": "index.html",
+  "keywords": [
+    "angular",
+    "firebase"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
