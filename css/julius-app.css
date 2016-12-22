@@ -46,6 +46,11 @@ jnav {
     color: cornflowerblue;
 }
 
+.hover-delete {
+    transform: scale(1.2, 1.2);
+    color: indianred;
+}
+
 
 
 

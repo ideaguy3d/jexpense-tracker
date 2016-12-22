@@ -16,17 +16,22 @@ app.run(function ($rootScope, $location) {
 });
 
 app.config(['$stateProvider', function ($stateProvider) {
-
     var homeState = {
         name: 'home',
         url: '/home',
-        template: '<home expenses-in-order="$resolve.expensesInOrder"></home>',
+        template: '<home expenses-in-order="$resolve.expensesInOrder" categories="$resolve.categories"></home>',
         resolve: {
-            expensesInOrder: function($firebaseArray, fbRef, auth){
+            expensesInOrder: function(expenseList, fbRef, auth){
                 return auth.$requireAuth().then(function(){
                     var query = fbRef.getExpensesRef().orderByChild('date');
-                    return $firebaseArray(query).$loaded();
+                    return expenseList(query).$loaded();
                 })
+            },
+            categories: function($firebaseArray, fbRef, auth){
+                return auth.$requireAuth().then(function(){
+                    var query = fbRef.getCategoriesRef().orderByChild('name');
+                    return $firebaseArray(query).$loaded();
+                });
             }
         }
     };

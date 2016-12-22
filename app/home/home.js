@@ -5,7 +5,17 @@
 angular.module('app').component('home', {
     templateUrl: '/app/home/home.html',
     bindings: {
-        expensesInOrder: '='
+        expensesInOrder: '=',
+        categories: '='
+    }, 
+    controller: function(){
+        this.homeCreateExpense = function(expenseData){
+            this.expensesInOrder.$add(expenseData);
+        };
+
+        this.editExpense = function(expense){
+            this.editedExpense = expense;
+        };
     }
 });
 
