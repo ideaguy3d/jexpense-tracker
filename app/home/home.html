@@ -5,7 +5,11 @@
     </h1>
 
     <expense-list expense-data="$ctrl.expensesInOrder"
-                  select-expense="$ctrl.editExpense(expense)"></expense-list>
+                  select-expense="$ctrl.editExpense(expense)">
+    </expense-list>
+
     <edit-expense categories="$ctrl.categories" edited-expense="$ctrl.editedExpense"
-                  create-new-expense="$ctrl.homeCreateExpense(expenseData)"></edit-expense>
+                  update-expense = "$ctrl.updateExpense()"
+                  create-new-expense="$ctrl.homeCreateExpense(expenseData)">
+    </edit-expense>
 </div>

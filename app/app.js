@@ -47,7 +47,7 @@ app.config(['$stateProvider', function ($stateProvider) {
         }
     };
 
-    // this does not have a view
+    // this state does not have a view
     var logoutState = {
         name: 'logout',
         url: '/logout',

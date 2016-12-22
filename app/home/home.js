@@ -16,6 +16,11 @@ angular.module('app').component('home', {
         this.editExpense = function(expense){
             this.editedExpense = expense;
         };
+        
+        this.updateExpense = function(){
+            console.log(this.editedExpense);
+            this.expensesInOrder.$save(this.editedExpense);
+        }
     }
 });
 
