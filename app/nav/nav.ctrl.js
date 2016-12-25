@@ -7,7 +7,7 @@ angular.module('app').controller('NavCtrl', ['$firebaseObject', 'fbRef', '$scope
         // the following code is heavily dependent on the user already being logged in.
         $scope.loaded = false;
         $scope.preferences = $firebaseObject(fbRef.getPreferenceRef()); // if the user is not logged in I have to comment out the this line to get the app to work, then login then uncomment
-        $scope.preferences.$loaded().then(function(data){
+        $scope.preferences.$loaded().then(function(data) {
             $scope.loaded = true;
         });
 

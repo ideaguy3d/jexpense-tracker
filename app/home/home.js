@@ -20,7 +20,7 @@ angular.module('app').component('home', {
         this.updateExpense = function(){
             console.log(this.editedExpense);
             this.expensesInOrder.$save(this.editedExpense);
-        }
+        };
     }
 });
 
