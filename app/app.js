@@ -2,7 +2,7 @@
  * Created by Julius Alvarado on 12/18/2016.
  */
 
-var app = angular.module('app', ['firebase', 'ui.router']);
+var app = angular.module('app', ['firebase', 'ui.router', 'ngComponentRouter']);
 
 app.run(function ($rootScope, $location) {
     // the following lines of code to not work. I'll have to figure out why later.
@@ -95,13 +95,25 @@ app.config(['$stateProvider', function ($stateProvider) {
         }
     };
 
+    var productState = {
+        name: 'product',
+        url: '/product',
+        template: '<product-list products="$resolve.products"></product-list>',
+        resolve: {
+            products: function(fbRef, $firebaseArray){
+                return $firebaseArray(fbRef.getProductsRef()).$loaded();
+            }
+        }
+    };
+
     $stateProvider
         .state(homeState)
         .state(loginState)
         .state(logoutState)
         .state(portalState)
         .state(userprefState)
-        .state(categoriesState);
+        .state(categoriesState)
+        .state(productState);
 }]);
 
 //\\

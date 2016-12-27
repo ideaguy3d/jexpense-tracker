@@ -1,0 +1,47 @@
+<div class="jumbotron">
+	<section class="container">
+		<h3>Products</h3>
+		<small>$http .json product data</small>
+		<table class="table">
+			<tr>
+				<th>Title</th>
+				<th>Length</th>
+				<th>Rating</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="prod in product.otherProducts">
+				<td>{{ prod.title }}</td>
+				<td>{{ prod.length }}</td>
+				<td>
+					<product-rating value="prod.rating">
+						<i class="fa fa-star"></i>
+					</product-rating>
+				</td>
+				<td>
+					<div class="btn-group">
+						<button class="btn btn-default" ng-click="product.upRating(prod)">
+							<i class="fa fa-plus"></i>
+						</button>
+						<button class="btn btn-default" ng-click="product.downRating(prod)">
+							<i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+		
+		<hr>
+		
+		<h3>FirebaseDB data:</h3>
+		<h4 ng-repeat="product in product.theProducts">
+			Product: <i>{{ product.title }}</i>
+		</h4>
+		
+		<!-- basic ng prac -->
+		<h1>Message:</h1>
+		<h2>{{ product.message }}</h2>
+		<input type="text" placeholder="write something" ng-model="product.message">
+		<button ng-click="product.changeMessage()">Change Message</button>
+	</section>
+	
+</div>

@@ -13,18 +13,21 @@ angular.module('app').factory('fbRef', ['rootRef', 'auth',
                 // at the same firebase node, so when 1 person makes a change then
                 // the other 9 people will see that change... I'll have to fix this.
                 var check = auth.$getAuth(), zUser;
-                console.log("ja - check: ");
-                console.log(check);
+                // console.log("ja - check: ");
+                // console.log(check);
                 if(check) zUser = auth.$getAuth.uid;
                 else zUser = "guest";
-                console.log("zUser = " + zUser);
-                return rootRef.child('preferences').child(zUser);
+                // console.log("zUser = " + zUser);
+                return rootRef.child('preferences').child('guest');
             },
-            getCategoriesRef: function(){
+            getCategoriesRef: function() {
                 return rootRef.child('categories');
             },
             getExpensesRef: function(){
                 return rootRef.child('expenses').child('julius');
+            },
+            getProductsRef: function(){
+               return rootRef.child('products');
             }
         }
     }
