@@ -30,6 +30,15 @@
             });
         };
 
+        jProduct.goTo = function(id){
+            // this is like ng-link attribute directive
+            jProduct.$router.navigate(['Details', { id: id }, 'Overview']);
+        };
+
+        jProduct.setRating = function(movie, newRating) {
+            movie.rating = newRating;
+        };
+
         jProduct.upRating = function(prod) {
             if(prod.rating < 5) {
                 prod.rating += 1;
@@ -44,9 +53,10 @@
     }
 
     ja.component('productList', {
-        templateUrl: 'app/products/temp.product.list.html',
+        templateUrl: 'app/products/product.list.html',
         bindings: {
-            theProducts: '=products'
+            theProducts: '=products',
+            "$router": '<'
         },
         controllerAs: 'product',
         controller: ['$http', productCtrl]

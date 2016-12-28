@@ -8,14 +8,13 @@
     
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="app/bower_components/animate.css/animate.min.css">
 
     <link rel="stylesheet" href="css/julius-app.css">
 </head>
 
 
 <body>
-
-<product-app></product-app>
 
 <header id="top" ng-controller="NavCtrl">
     <nav ng-if="loaded" class="navbar navbar-fixed-top cbp-af-header" role="navigation"
@@ -48,12 +47,14 @@
         </div>
     </nav>
 </header>
+
+<!-- sub-nav will always appear at the bottom left corner for now -->
 <sub-nav></sub-nav>
 
-<br>
+<!-- ng component router -->
+<product-app></product-app>
 
-<!--<product-list></product-list>-->
-
+<!-- ng-ui router -->
 <div class="container-fluid">
     <ui-view></ui-view>
 </div>
@@ -63,9 +64,9 @@
 <script src="vendor/jq2/jquery-2.1.1.min.js"></script>
 <script src="vendor/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
-<script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular-route.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script src="app/bower_components/angular-component-router/angular_1_router.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-animate.js"></script>
+<script type="text/javascript" src="app/bower_components/angular-component-router/angular_1_router.js"></script>
 <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 <script type="text/javascript" src="https://cdn.firebase.com/libs/angularfire/1.1.4/angularfire.min.js"></script>
 
@@ -89,6 +90,10 @@
 <script src="app/expenses/editExpense.js"></script>
 <script src="app/products/product.list.com.js"></script>
 <script src="app/products/product.rating.com.js"></script>
+<script src="app/products/product.app.com.js"></script>
+<script src="app/products/product.detail.com.js"></script>
+<script src="app/products/accordian.com.js"></script>
+
 
 </body>
 </html>

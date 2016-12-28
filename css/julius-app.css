@@ -51,6 +51,22 @@ jnav {
     color: indianred;
 }
 
+.j-stars {
+    cursor: pointer;
+}
+
+hr {
+    border-color: #555;
+}
+
+accordian .ng-enter {
+    animation: bounce 1.5s;
+}
+
+accordian .ng-leave {
+    animation: bounceOut 1.5s;
+}
+
 
 
 

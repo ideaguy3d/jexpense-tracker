@@ -2,7 +2,13 @@
  * Created by Julius Alvarado on 12/18/2016.
  */
 
-var app = angular.module('app', ['firebase', 'ui.router', 'ngComponentRouter']);
+var app = angular.module('app', ['firebase', 'ui.router', 'ngComponentRouter', 'ngAnimate']);
+
+app.value('$routerRootComponent', 'productApp');
+
+app.component('appAbout', {
+    template: '<h1>About Julius3D.com Studios</h1><hr>'
+});
 
 app.run(function ($rootScope, $location) {
     // the following lines of code to not work. I'll have to figure out why later.

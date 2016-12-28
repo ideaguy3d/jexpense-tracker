@@ -1,0 +1,85 @@
+<div class="jumbotron">
+	<section class="container">
+		
+		<!-- Table of Product Data -->
+		<h3>Products</h3>
+		<small>$http .json product data</small>
+		<table class="table">
+			<tr>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Rating</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="prod in product.otherProducts">
+				<td>{{ prod.title }}</td>
+				<td>{{ prod.length }}</td>
+				<td>
+					<product-rating value="prod.rating" max="5"
+					                set-rating="product.setRating(prod, value)">
+						<small>|</small>
+					</product-rating>
+				</td>
+				<td>
+					<button class="btn btn-default" ng-click="product.upRating(prod)">
+						<i class="fa fa-plus"></i>
+					</button>
+					<button class="btn btn-default" ng-click="product.downRating(prod)">
+						<i class="fa fa-minus"></i>
+					</button>
+					<button ng-click="product.goTo(prod.id)" class="btn btn-info">
+						More Info
+					</button>
+					<a href="" class="btn btn-primary" ng-link="['Details', {id: prod.id}, 'Overview']">
+						<i class="fa fa-arrow-circle-o-right fa-2x"></i>
+					</a>
+				</td>
+			</tr>
+		</table><hr/>
+		
+		<!-- Accordian for products -->
+		<accordian>
+			<accordian-panel heading="Product Title 1">
+				Product features:
+				<span class="label label-default">Default</span>
+				<span class="label label-primary">Primary</span>
+				<span class="label label-success">Success</span>
+				<span class="label label-info">Info</span>
+				<span class="label label-warning">Warning</span>
+				<span class="label label-danger">Danger</span>
+			</accordian-panel>
+			<accordian-panel heading="Product Title 2">
+				Product features:
+				<span class="label label-default">Default</span>
+				<span class="label label-primary">Primary</span>
+				<span class="label label-success">Success</span>
+				<span class="label label-info">Info</span>
+				<span class="label label-warning">Warning</span>
+				<span class="label label-danger">Danger</span>
+			</accordian-panel>
+			<accordian-panel heading="Product Title 3">
+				Product features:
+				<span class="label label-default">Default</span>
+				<span class="label label-primary">Primary</span>
+				<span class="label label-success">Success</span>
+				<span class="label label-info">Info</span>
+				<span class="label label-warning">Warning</span>
+				<span class="label label-danger">Danger</span>
+			</accordian-panel>
+		</accordian>
+		
+		<!-- Basic ng practice -->
+		<hr>
+		<h3>FirebaseDB data:</h3>
+		<h4 ng-repeat="product in product.theProducts">
+			Product: <i>{{ product.title }}</i>
+		</h4>
+		
+		<!-- basic ng prac -->
+		<h1>Message:</h1>
+		<h2>{{ product.message }}</h2>
+		<input type="text" placeholder="write something" ng-model="product.message">
+		<button ng-click="product.changeMessage()">Change Message</button>
+	</section>
+	
+</div>
