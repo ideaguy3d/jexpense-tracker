@@ -13,6 +13,7 @@
             {path: '/list', component: 'productList', name: 'List'},
             {path: '/about', component: 'appAbout', name: 'About'},
             {path: '/detail/:id/...', component:'productDetails', name: 'Details'},
+            {path: '/skill-check', component: 'skillCheck', name: 'Skills'},
             {path: '/**', redirectTo: ['List']}
         ]
     });

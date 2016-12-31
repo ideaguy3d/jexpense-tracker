@@ -1,0 +1,46 @@
+<div class="container">
+	<h1 class="page-header">Click the Skills you're looking for:</h1>
+	<section class="row">
+		<div class="col-md-8">
+			<div class="panel panel-primary">
+				<!-- panel heading -->
+				<div class="panel-heading">
+					<h1 class="panel-title">Julius Alvarado's Skills</h1>
+				</div>
+				
+				<!-- panel body -->
+				<div class="panel-body">
+					<div class="skill-cell" ng-repeat="jSkill in skill.skillsObjArray"
+					        ng-class="{'was-selected': jSkill.level !== 'l'}"
+					        ng-click="skill.parentSelect(jSkill)">
+						<h4 class="skill-image text-center">{{ jSkill.name }}</h4>
+						<h3 class="text-center"><i class="fa fa-html5 fa-3x"></i></h3>
+						<hr>
+						<div class="skill-info">
+							<h5>I'm at an <strong>Advanced</strong> {{ jSkill.name }} level</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Right Side of Skill check app -->
+		<div class="col-md-4">
+			<h2 class="page-header">{{ skill.sideTitle }}</h2>
+			<h3 class="alert"
+			    ng-class="{'alert-success': skill.setAlertSuccess, 'alert-warning': !skill.setAlertSuccess}">
+				{{ skill.selectedSkill.name }}
+			</h3>
+			<h3>Click Skill Level Desired:</h3>
+			<h3>
+				<span class="label" ng-repeat="level in skill.skillLevels track by level.zid"
+				      ng-class="{'label-warning': level.zlevel === 'basic', 'label-default': level.zlevel === 'intermediate', 'label-primary': level.zlevel === 'advanced', 'label-success': level.zlevel === 'expert'}"
+				      ng-click="skill.userSelectedSkill(level)">
+					{{ level.zlevel }}
+				</span>
+			</h3><br>
+			
+			<h4 ng-repeat="jLevel in skill.userSelectedSkills track by $index">{{ jLevel.name }}, {{ jLevel.level }}</h4>
+		</div>
+	</section>
+</div>

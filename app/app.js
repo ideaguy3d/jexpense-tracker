@@ -7,11 +7,13 @@ var app = angular.module('app', ['firebase', 'ui.router', 'ngComponentRouter', '
 app.value('$routerRootComponent', 'productApp');
 
 app.component('appAbout', {
-    template: '<h1>About Julius3D.com Studios</h1><hr>'
+    template: '<h1>About Julius3D.com Studios</h1><hr> ' +
+    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aliquam, aperiam aspernatur at blanditiis, debitis dolorem harum illum non odit praesentium quae ratione repellendus reprehenderit soluta ullam vitae voluptatum.</p>' +
+    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aliquam, aperiam aspernatur at blanditiis, debitis dolorem harum illum non odit praesentium quae ratione repellendus reprehenderit soluta ullam vitae voluptatum.</p>'
 });
 
 app.run(function ($rootScope, $location) {
-    // the following lines of code to not work. I'll have to figure out why later.
+    // the following lines of code do not work. I'll have to figure out why later.
     $rootScope.$on('$routeChangeError', function (e, next, prev, err) {
         console.log("in $rootScop.$on()");
         if (err === "AUTH_REQUIRED") {
@@ -27,14 +29,14 @@ app.config(['$stateProvider', function ($stateProvider) {
         url: '/home',
         template: '<home expenses-in-order="$resolve.expensesInOrder" categories="$resolve.categories"></home>',
         resolve: {
-            expensesInOrder: function(expenseList, fbRef, auth){
-                return auth.$requireAuth().then(function(){
+            expensesInOrder: function (expenseList, fbRef, auth) {
+                return auth.$requireAuth().then(function () {
                     var query = fbRef.getExpensesRef().orderByChild('date');
                     return expenseList(query).$loaded();
                 })
             },
-            categories: function($firebaseArray, fbRef, auth){
-                return auth.$requireAuth().then(function(){
+            categories: function ($firebaseArray, fbRef, auth) {
+                return auth.$requireAuth().then(function () {
                     var query = fbRef.getCategoriesRef().orderByChild('name');
                     return $firebaseArray(query).$loaded();
                 });
@@ -106,7 +108,7 @@ app.config(['$stateProvider', function ($stateProvider) {
         url: '/product',
         template: '<product-list products="$resolve.products"></product-list>',
         resolve: {
-            products: function(fbRef, $firebaseArray){
+            products: function (fbRef, $firebaseArray) {
                 return $firebaseArray(fbRef.getProductsRef()).$loaded();
             }
         }
