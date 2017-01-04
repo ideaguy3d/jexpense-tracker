@@ -6,6 +6,7 @@
     "use strict";
 
     var mod = angular.module('app');
+
     mod.component('skillCheck', {
         templateUrl: 'app/skill_check/skill.check.html',
         controllerAs: 'skill',

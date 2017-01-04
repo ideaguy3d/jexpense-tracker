@@ -22,49 +22,15 @@
 
 <body>
 
-<header id="top" ng-controller="NavCtrl">
-    <nav ng-if="loaded" class="navbar navbar-fixed-top cbp-af-header" role="navigation"
-         ng-class="{'navbar-inverse': preferences.theme === 'dark', 'navbar-default': preferences.theme === 'light'}">
-
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-nav">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/#/">
-                    <img src="img/logo/j3d.png" alt="logo">
-                </a>
-            </div>
-
-            <div id="top-nav" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href ui-sref="home" ui-sref-active="j-active">Home</a></li>
-                    <li><a href ui-sref="product" ui-sref-active="j-active">Products</a></li>
-                    <li><a href ui-sref="portal" ui-sref-active="j-active">Portal</a></li>
-                    <li><a href ui-sref="userpref" ui-sref-active="j-active">Preferences</a></li>
-                    <li><a href ui-sref="login" ui-sref-active="j-active">Login</a></li>
-                    <li><a href="" ui-sref="categories" ui-sref-active="j-active">Categories</a></li>
-                    <!--<li><a href='/#/logout' ui-sref-active="j-active">Logout</a></li>-->
-                    <li class="jwelcome"><a id="jwelcome">Welcome {{ preferences.displayName }}</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<!-- sub-nav will always appear at the bottom left corner for now -->
-<sub-nav></sub-nav>
 
 <!-- ng component router -->
 <product-app></product-app>
 
-<!-- ng ui router -->
-<div class="container-fluid">
-    <ui-view></ui-view>
-</div>
+<!--<section ng-include="'app/products/data-viz/bar.graphs.html'"></section>-->
+<!--<ja-bar-graph></ja-bar-graph>-->
 
+<!-- sub-nav will always appear at the bottom left corner for now -->
+<sub-nav></sub-nav>
 
 <!-- JavaScript Frameworks & Libraries -->
 <script src="vendor/jq2/jquery-2.1.1.min.js"></script>
@@ -76,8 +42,11 @@
 <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 <script type="text/javascript" src="https://cdn.firebase.com/libs/angularfire/1.1.4/angularfire.min.js"></script>
 
-
+<!----------------------->
 <!-- Custom JavaScript -->
+<!----------------------->
+
+<!-- angular fire intensive -->
 <script src="app/app.js"></script>
 <script src="app/home/home.js"></script>
 <script src="app/firebaseUrl.js"></script>
@@ -94,12 +63,22 @@
 <script src="app/expenses/expense.serv.js"></script>
 <script src="app/expenses/expenses.js"></script>
 <script src="app/expenses/editExpense.js"></script>
+
+<!-- ng 1.5 component & SVG intensive -->
 <script src="app/products/product.list.com.js"></script>
 <script src="app/products/product.rating.com.js"></script>
-<script src="app/products/product.app.com.js"></script>
+<script src="app/products/product.app.com.js"></script> <!-- product sub application entry point -->
+
 <script src="app/products/product.detail.com.js"></script>
 <script src="app/products/accordian.com.js"></script>
+
 <script src="app/skill_check/skill.check.com.js"></script>
+
+<!-- SVG visualization code -->
+<script src="app/products/data-viz/bar.graph.dir.js"></script>
+<!-- svg viz component entry point -->
+<script src="app/products/data.visualization.com.js"></script>
+
 
 
 </body>

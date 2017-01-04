@@ -101,6 +101,12 @@ accordian .ng-leave {
     }
 }
 
+.ja-svg-section {
+    display: inline-block;
+    box-shadow: 10px 10px 4px rgba(0,0,0,0.5);
+    margin: 8px;
+}
+
 
 
 

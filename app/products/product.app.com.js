@@ -4,6 +4,10 @@
 
 (function(){
     "use strict";
+    // random app-about component view
+    angular.module('app').component('appAbout', {
+        templateUrl: 'app/about/about.html'
+    });
 
     var mod = angular.module('app');
 
@@ -14,9 +18,13 @@
             {path: '/about', component: 'appAbout', name: 'About'},
             {path: '/detail/:id/...', component:'productDetails', name: 'Details'},
             {path: '/skill-check', component: 'skillCheck', name: 'Skills'},
-            {path: '/**', redirectTo: ['List']}
+            {path: '/data-viz-overview', component: 'jaDataViz', name:'DataViz'},
+            { path: '/**', redirectTo: ['List'] }
         ]
     });
+
 }());
+
+
 
 //\\

@@ -6,12 +6,6 @@ var app = angular.module('app', ['firebase', 'ui.router', 'ngComponentRouter', '
 
 app.value('$routerRootComponent', 'productApp');
 
-app.component('appAbout', {
-    template: '<h1>About Julius3D.com Studios</h1><hr> ' +
-    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aliquam, aperiam aspernatur at blanditiis, debitis dolorem harum illum non odit praesentium quae ratione repellendus reprehenderit soluta ullam vitae voluptatum.</p>' +
-    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aliquam, aperiam aspernatur at blanditiis, debitis dolorem harum illum non odit praesentium quae ratione repellendus reprehenderit soluta ullam vitae voluptatum.</p>'
-});
-
 app.run(function ($rootScope, $location) {
     // the following lines of code do not work. I'll have to figure out why later.
     $rootScope.$on('$routeChangeError', function (e, next, prev, err) {
