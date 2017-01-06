@@ -1,34 +1,46 @@
-<div class="container" ng-controller="BarGraphCtrl">
-	<h1 class="page-header">
-		About The Application
-		<small>{{ subtitle }} :)</small>
-	</h1>
-	
-	<!-- ng svg binding -->
-	<div>
-		<!-- input controls -->
-		Width:
-		<input type="text" ng-model="width">
-		Color:
-		<select name="" id="" ng-model="color">
-			<option value="#f15">pink</option>
-			<option value="#2a9fbc">blue</option>
-			<option value="#f15b2a">orange</option>
-			<option value="#a62e5c">plum</option>
-		</select>
-		Height
-		<input type="text" ng-model="specs.height">
-		<br>
-		<!-- left SVG -->
-		<section class="ja-svg-section">
-			<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250">
-				<rect ng-repeat="bar in specs.s"
-				      x="0" y="{{ (1 * specs.height + specs.padding) * $index }}" fill="{{ color }}"
-				      width="{{width}}" height="{{ specs.height }}">
-				</rect>
-				<line x1="0" x2="0" y1="0" y2="105" style="stroke: black; stroke-width: 2px"></line>
-				<line x1="0" y1="105" x2="70" y2="105" style="stroke: black; stroke-width: 2px"></line>
-			</svg>
-		</section>
-	</div>
+<!-- ng svg bar chart binding -->
+<div>
+	<!-- input controls -->
+	zWidth:
+	<input type="text" ng-model="width">
+	zColor:
+	<select name="" id="" ng-model="color">
+		<option value="#f15">pink</option>
+		<option value="#2a9fbc">blue</option>
+		<option value="#f15b2a">orange</option>
+		<option value="#a62e5c">plum</option>
+	</select>
+	<br>
+	<strong>zHeight</strong>
+	<input type="text" ng-model="specs.height">
+	<br>
+	<!-- left SVG -->
+	<section class="ja-svg-section">
+		<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250">
+			<g ng-repeat="bar in specs.bars">
+				<text x="0"
+				      y="{{ ((1*specs.height+specs.padding)*$index)+(specs.height/2)+(specs.fontHeight/2) }}"
+				      text-anchor="start" style="font-family: sans-serif; font-size: 10pt;">
+					{{ bar.text }}
+				</text>
+				<rect x="{{ specs.labelWidth }}" y="{{ (1 * specs.height + specs.padding) * $index }}"
+				      fill="{{ bar.color }}" width="{{bar.width}}" height="{{ specs.height }}"></rect>
+			</g>
+			
+			<!-- z vertical line -->
+			<line ng-attr-x1="{{ specs.labelWidth }}" y1="0" x2="{{ specs.labelWidth }}"
+			      y2="{{specs.overallHeight}}" style="stroke: black; stroke-width: 2px"></line>
+			<!-- z horizontal line -->
+			<line x1="{{ specs.labelWidth }}" y1="{{specs.overallHeight}}"
+			      y2="{{ specs.overallHeight }}" x2="{{ specs.overallWidth + specs.labelWidth }}"
+			      style="stroke: black; stroke-width: 2px"></line>
+			<!-- indicators at the bottom of the bar graph -->
+			<text ng-repeat="gradient in specs.gradients"
+			      y="{{ (1*specs.height+specs.padding)*specs.bars.length + specs.fontHeight + 3 }}"
+			      x="{{ specs.labelWidth + gradient.offset }}" text-anchor="middle"
+			      style="font-family: sans-serif; font-size: 10pt;">
+				{{ gradient.text }}
+			</text>
+		</svg>
+	</section>
 </div>

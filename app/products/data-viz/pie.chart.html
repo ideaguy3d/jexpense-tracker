@@ -1,0 +1,12 @@
+<div ng-controller="pieChartCtrl">
+	<svg xmlns="http://www.w3.org/2000/svg" height="600" width="800">
+		<path ng-repeat="slice in specs.slices" ng-attr-stroke="{{ slice.color }}" ng-attr-fill="{{ slice.color }}" stroke-width="0"
+		      ng-attr-d="M 300, 300 l {{ slice.x1 }}, {{ slice.y1 * -1 }} a 200, 200 0 0 0 {{ slice.x2 - slice.x1 }}, {{ (slice.y2 - slice.y1) * -1 }}"></path>
+		<line ng-repeat="slice in specs.slices" stroke="#333" stroke-width="3"
+		      ng-attr-x1="{{ 300 + slice.ticMark.x - 10 }}" ng-attr-y1="{{ 300 + (slice.ticMark.y * -1) }}"
+		      ng-attr-x2="{{ 300 + slice.ticMark.x + 10 }}" ng-attr-y2="{{ 300 + slice.ticMark.y * -1 }}"
+		      ng-attr-transform="rotate( {{ slice.ticMark.rotation * -1 }}, {{ 300 + slice.ticMark.x }}, {{ 300 + slice.ticMark.y * -1 }} )"></line>
+		<text ng-repeat="slice in specs.slices" ng-attr-x="{{ 300 + slice.label.x }}" ng-attr-y="{{ 300 + (slice.label.y - slice.label.adjustment) * -1 }}"
+		      style="font-family: sans-serif; font-size: 16pt;" text-anchor="{{slice.label.alignment}}">{{ slice.label.text }}</text>
+	</svg>
+</div>

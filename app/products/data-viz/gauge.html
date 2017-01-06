@@ -1,0 +1,21 @@
+<div>
+	<input type="text" ng-model="specs.currentVal">
+	<!-- <path d = "M [starting x] [starting y] A [radius] [radius] 0 0 1 [ending x] [ending y]" />  -->
+	<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600">
+		<path id="background" d="{{ gaugeBackground }}" stroke-width="10" stroke="#434343" fill="none"></path>
+		<path d="{{ gaugeVal }}" stroke-width="10" stroke="cornflowerblue" fill="none"></path>
+		<path id="gradients" d="{{ gaugeGradients }}" stroke-width="0" fill="none"></path>
+		
+		<text dx="0" dy="0" text-anchor="middle" style="font: bold large sans-serif"
+		      ng-repeat="gradient in specs.gradients">
+			<textPath xlink:href="#gradients" startOffset="{{ gradient.offset }}%">
+				{{ gradient.value }}
+			</textPath>
+		</text>
+		<text x="{{ maxValCoords.x }}" y="{{ maxValCoords.y }}" text-anchor="middle"
+		      style="font: bold large sans-serif"
+		      transform="rotate(90, {{ maxValCoords.x }}, {{ maxValCoords.y }})">
+			{{ specs.maxValue }}
+		</text>
+	</svg>
+</div>
