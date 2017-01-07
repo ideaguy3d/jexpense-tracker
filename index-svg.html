@@ -25,11 +25,15 @@
 <body ng-app="svg-app">
 
 <div ng-cloak class="container">
-	<br>
-	<!--<ja-pie-chart></ja-pie-chart>-->
+	
+	
 	
 	<hr>
 	<div ng-controller="DataVizCtrl">
+		<ja-pie-chart specs="specs2PieChart"></ja-pie-chart>
+		<br>
+		<ja-pie-chart specs="specsPieChart"></ja-pie-chart>
+		<br>
 		<ja-gauge gauge-ctrl-data="specsGaugeCtrl"></ja-gauge>
 		<br>
 		<ja-bar-graph specs="specsBarGraph"></ja-bar-graph>

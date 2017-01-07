@@ -1,12 +1,12 @@
 <div>
 	<!-- <path d = "M [starting x] [starting y] A [radius] [radius] 0 0 1 [ending x] [ending y]" />  -->
-	<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+	<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">
 		<!-- path the guage text will follow -->
-		<path id="gradients" ng-attr-d="{{ gaugeGradients }}" stroke-width="4" fill="cornflowerblue"></path>
+		<path id="gradients" ng-attr-d="{{ gaugeGradients }}" stroke-width="4" fill="none"></path>
 		<!-- overall gauge to be filled -->
 		<path id="background" ng-attr-d="{{ gaugeBackground }}" stroke-width="10" stroke="#434343" fill="none"></path>
 		<!-- gauge fill -->
-		<path ng-attr-d="{{ gaugeVal }}" style="stroke-dasharray: 10 5" stroke-width="10" stroke="whitesmoke" fill="none"></path>
+		<path ng-attr-d="{{ gaugeVal }}" style="{{ dashArray }}" stroke-width="10" stroke="cornflowerblue" fill="none"></path>
 		
 		
 		
