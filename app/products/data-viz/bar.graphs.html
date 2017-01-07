@@ -16,28 +16,31 @@
 	<br>
 	<!-- left SVG -->
 	<section class="ja-svg-section">
-		<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250">
+		<svg xmlns="http://www.w3.org/2000/svg" width="300" height="125">
 			<g ng-repeat="bar in specs.bars">
 				<text x="0"
-				      y="{{ ((1*specs.height+specs.padding)*$index)+(specs.height/2)+(specs.fontHeight/2) }}"
+				      ng-attr-y="{{ ((1*specs.height+specs.padding)*$index)+(specs.height/2)+(specs.fontHeight/2) }}"
 				      text-anchor="start" style="font-family: sans-serif; font-size: 10pt;">
 					{{ bar.text }}
 				</text>
-				<rect x="{{ specs.labelWidth }}" y="{{ (1 * specs.height + specs.padding) * $index }}"
-				      fill="{{ bar.color }}" width="{{bar.width}}" height="{{ specs.height }}"></rect>
+				<rect style="{{ bar.barStyle }}"
+				      ng-attr-x="{{ specs.labelWidth }}" ng-attr-y="{{ (1 * specs.height + specs.padding) * $index }}"
+				      ng-attr-fill="{{ bar.color }}" ng-attr-width="{{bar.width}}"
+				      ng-attr-height="{{ specs.height }}"></rect>
 			</g>
 			
 			<!-- z vertical line -->
-			<line ng-attr-x1="{{ specs.labelWidth }}" y1="0" x2="{{ specs.labelWidth }}"
-			      y2="{{specs.overallHeight}}" style="stroke: black; stroke-width: 2px"></line>
+			<line ng-attr-x1="{{ specs.labelWidth }}" y1="0" ng-attr-x2="{{ specs.labelWidth }}"
+			      ng-attr-y2="{{specs.overallHeight}}" style="stroke: black; stroke-width: 2px"></line>
 			<!-- z horizontal line -->
-			<line x1="{{ specs.labelWidth }}" y1="{{specs.overallHeight}}"
-			      y2="{{ specs.overallHeight }}" x2="{{ specs.overallWidth + specs.labelWidth }}"
+			<line ng-attr-x1="{{ specs.labelWidth }}" ng-attr-y1="{{specs.overallHeight}}"
+			      ng-attr-y2="{{ specs.overallHeight }}" ng-attr-x2="{{ specs.overallWidth + specs.labelWidth }}"
 			      style="stroke: black; stroke-width: 2px"></line>
+			
 			<!-- indicators at the bottom of the bar graph -->
 			<text ng-repeat="gradient in specs.gradients"
-			      y="{{ (1*specs.height+specs.padding)*specs.bars.length + specs.fontHeight + 3 }}"
-			      x="{{ specs.labelWidth + gradient.offset }}" text-anchor="middle"
+			      ng-attr-y="{{ (1*specs.height+specs.padding)*specs.bars.length + specs.fontHeight + 3 }}"
+			      ng-attr-x="{{ specs.labelWidth + gradient.offset }}" text-anchor="middle"
 			      style="font-family: sans-serif; font-size: 10pt;">
 				{{ gradient.text }}
 			</text>

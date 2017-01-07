@@ -5,7 +5,7 @@
 // SVG MainCtrl class
 (function () {
     "use strict";
-    var app = angular.module('svg-app', []);
+    var app = angular.module('svg-app');
 
     app.controller('BarGraphCtrl', ['$scope', function ($scope) {
 
@@ -13,20 +13,38 @@
         $scope.width = "100";
         $scope.color = "#f15";
         // data model
-        $scope.specs = {
+        $scope.specs = { id: 'bg1',
+            height: 30, padding: 5, fontHeight: 10,
+            gradientInterval: 50, gradients: [],
+            fontStyle: '10pt sans-serif',
+            bars: [
+                {
+                    color: '#36bc37',
+                    width: 70, text: 'JavaScript'
+                }, {
+                    color: '#27e3f1',
+                    width: 40, text: 'Angular'
+                }, {
+                    color: '#f15eff',
+                    width: 20, text: 'CSS / CSS3'
+                }
+            ]
+        };
+
+        $scope.specs2 = { id: 'bg1',
             height: 30, padding: 5, fontHeight: 10,
             gradientInterval: 50, gradients: [],
             fontStyle: '10pt sans-serif',
             bars: [
                 {
                     color: '#2a9fbc',
-                    width: 50, text: 'Software'
+                    width: 70, text: 'Software'
                 }, {
                     color: '#f15b2a',
-                    width: 60, text: 'Computers'
+                    width: 190, text: 'Computers'
                 }, {
                     color: '#a62e5c',
-                    width: 90, text: 'Networks'
+                    width: 140, text: 'Networks'
                 }
             ]
         };

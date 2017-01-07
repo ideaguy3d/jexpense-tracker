@@ -9,7 +9,6 @@
 
     ja.directive('jaPieChart', [
         function () {
-
             return {
                 templateUrl: 'app/products/data-viz/pie.chart.html'
             }

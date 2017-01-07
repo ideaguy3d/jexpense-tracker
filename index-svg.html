@@ -19,39 +19,47 @@
 			display: none !important;
 		}
 	</style>
-
 </head>
 
 
 <body ng-app="svg-app">
 
 <div ng-cloak class="container">
-	<h1 class="page-header">
-		About The Application
-		<small>svg data viz :)</small>
-	</h1>
-	
-	
-	<ja-pie-chart></ja-pie-chart>
+	<br>
+	<!--<ja-pie-chart></ja-pie-chart>-->
 	
 	<hr>
+	<div ng-controller="DataVizCtrl">
+		<ja-gauge gauge-ctrl-data="specsGaugeCtrl"></ja-gauge>
+		<br>
+		<ja-bar-graph specs="specsBarGraph"></ja-bar-graph>
+		<br>
+		<ja-bar-graph specs="specs2BarGraph"></ja-bar-graph>
+	</div>
 	
-	<!--<ja-bar-graph></ja-bar-graph>-->
-	
-	<!-- gauge data viz -->
-	<div id="svgGauge" ng-controller="GaugeCtrl">
-		<h2>{{ gaugeMessage }}</h2>
-		<ja-gauge gauge-ctrl-data="specs"></ja-gauge>
-	</div> <!-- END OF: GaugeCtrl -->
-	
-	<script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
-	<script type="text/javascript" src="app/products/data-viz/bar.graph.ctrl.js"></script>
-	<script type="text/javascript" src="app/products/data-viz/gauge.ctrl.js"></script>
-	<script type="text/javascript" src="app/products/data-viz/gauge.dir.js"></script>
-	<script type="text/javascript" src="app/products/data-viz/bar.graph.dir.js"></script>
-	<script type="text/javascript" src="app/products/data-viz/pie.chart.ctrl.js"></script>
-	<script type="text/javascript" src="app/products/data-viz/pie.chart.dir.js"></script>
+	<!-- animation ctrl element -->
+	<div ng-controller="animationCtrl">
+		<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100">
+			<rect ng-repeat="bar in specs.bars" style="{{ bar.barStyle }}"
+			      x="20" ng-attr-y="{{ (20 * $index) }}" fill="{{ bar.color }}"
+			      ng-attr-width="{{ bar.width }}" height="20"></rect>
+		</svg>
+	</div>
 </div>
+
+<!-- javascript frameworks -->
+<script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
+
+<!-- custom javascript -->
+<script type="text/javascript" src="app/products/data-viz/animation.ctrl.js"></script>
+<script type="text/javascript" src="app/products/data-viz/data.viz.mod.js"></script>
+<script type="text/javascript" src="app/products/data-viz/bar.graph.ctrl.js"></script>
+<script type="text/javascript" src="app/products/data-viz/gauge.ctrl.js"></script>
+<script type="text/javascript" src="app/products/data-viz/gauge.dir.js"></script>
+<script type="text/javascript" src="app/products/data-viz/bar.graph.dir.js"></script>
+<script type="text/javascript" src="app/products/data-viz/pie.chart.ctrl.js"></script>
+<script type="text/javascript" src="app/products/data-viz/data.viz.ctrl.js"></script>
+<script type="text/javascript" src="app/products/data-viz/pie.chart.dir.js"></script>
 
 
 </body>
