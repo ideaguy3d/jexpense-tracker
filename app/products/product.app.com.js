@@ -18,8 +18,8 @@
             {path: '/about', component: 'appAbout', name: 'About'},
             {path: '/detail/:id/...', component:'productDetails', name: 'Details'},
             {path: '/skill-check', component: 'skillCheck', name: 'Skills'},
-            {path: '/data-viz-overview', component: 'jaDataViz', name:'DataViz'},
-            { path: '/**', redirectTo: ['List'] }
+            {path: '/data-viz-overview', component: 'jaDataViz', name:'DataViz'}
+            //, { path: '/**', redirectTo: ['List'] }
         ]
     });
 

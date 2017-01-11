@@ -3,7 +3,7 @@
  */
 
 angular.module('app').component('editExpense', {
-    templateUrl: '/app/expenses/editExpense.html',
+    templateUrl: '/app/expenses/edit.expense.html',
     bindings: {
         categories: '=',
         createNewExpense: '&',
@@ -21,7 +21,7 @@ angular.module('app').component('editExpense', {
                 this.date = date.toLocaleString();
                 // I'm using node 'expenses.julius.childNode.category.id' to reference
                 // node 'categories.id', which will have more data about categories.
-                // They are in 2 seperate tree's.
+                // They are in 2 separate tree's.
                 this.selectedCategory =
                     this.categories[this.categories.$indexFor(newData.category.id)];
                 this.payee = newData.payee;

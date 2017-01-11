@@ -1,36 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="jeo-app">
 <head>
-    <meta charset="UTF-8">
-    <title>julius3d.com expense tracker app</title>
-    <link rel="icon" type="image/ico" href="laptop.ico"/>
-    
-    
-    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="app/bower_components/animate.css/animate.min.css">
-
-    <link rel="stylesheet" href="css/julius-app.css">
-    
-    <style type="text/css">
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-            display: none !important;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<title>Julius3D.com</title>
+	
+	<link rel="stylesheet" href="vendor/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="app/bower_components/animate.css/animate.min.css">
+	
+	<link rel="stylesheet" href="css/julius-app.css">
+	
+	<style type="text/css">
+		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+			display: none !important;
+		}
+	</style>
 </head>
 
 
 <body>
+<!-- The jeo app -->
+<header>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+					<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+				<a href="" ui-sref="expenses"><img src="img/logo/j3d.png" alt="logo"></a>
+			</div>
+			
+			<div id="main-nav" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="" ui-sref="expenses" ui-sref-active="j-active-state">Expenses</a></li>
+					<li><a href="" ui-sref="categories" ui-sref-active="j-active-state">Categories</a></li>
+					<li><a href="" ui-sref="preferences" ui-sref-active="j-active-state">Preferences</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
 
+<br>
 
-<!-- ng component router -->
-<product-app></product-app>
+<div class="container-fluid"><ui-view></ui-view></div>
 
-<!--<section ng-include="'app/products/data-viz/bar.graphs.html'"></section>-->
-<!--<ja-bar-graph></ja-bar-graph>-->
-
-<!-- sub-nav will always appear at the bottom left corner for now -->
-<sub-nav></sub-nav>
 
 <!-- JavaScript Frameworks & Libraries -->
 <script src="vendor/jq2/jquery-2.1.1.min.js"></script>
@@ -38,48 +52,13 @@
 <script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-animate.js"></script>
-<script type="text/javascript" src="app/bower_components/angular-component-router/angular_1_router.js"></script>
+<!--<script type="text/javascript" src="app/bower_components/angular-component-router/angular_1_router.js"></script>-->
 <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 <script type="text/javascript" src="https://cdn.firebase.com/libs/angularfire/1.1.4/angularfire.min.js"></script>
 
-<!----------------------->
 <!-- Custom JavaScript -->
-<!----------------------->
-
-<!-- angular fire intensive -->
-<script src="app/app.js"></script>
-<script src="app/home/home.js"></script>
-<script src="app/firebaseUrl.js"></script>
-<script src="app/security/auth.js"></script>
-<script src="app/security/logout.js"></script>
-<script src="app/security/login.js"></script>
-<script src="app/nav/nav.ctrl.js"></script>
-<script src="app/nav/nav.js"></script>
-<script src="app/sub-nav/sub-nav.js"></script>
-<script src="app/portal/portal.js"></script>
-<script src="app/firebaseRef.js"></script>
-<script src="app/userprefs/userprefs.js"></script>
-<script src="app/categories/categories.js"></script>
-<script src="app/expenses/expense.serv.js"></script>
-<script src="app/expenses/expenses.js"></script>
-<script src="app/expenses/editExpense.js"></script>
-
-<!-- ng 1.5 component & SVG intensive -->
-<script src="app/products/product.list.com.js"></script>
-<script src="app/products/product.rating.com.js"></script>
-<script src="app/products/product.app.com.js"></script> <!-- product sub application entry point -->
-
-<script src="app/products/product.detail.com.js"></script>
-<script src="app/products/accordian.com.js"></script>
-
-<script src="app/skill_check/skill.check.com.js"></script>
-
-<!-- SVG visualization code -->
-<script src="app/products/data-viz/bar.graph.dir.js"></script>
-<!-- svg viz component entry point -->
-<script src="app/products/data.visualization.com.js"></script>
-
-
+<script src="app-jeo/app-jeo.js"></script>
+<script src="app-jeo/categories/categories.com.js"></script>
 
 </body>
 </html>

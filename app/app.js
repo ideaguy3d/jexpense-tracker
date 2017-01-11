@@ -2,7 +2,8 @@
  * Created by Julius Alvarado on 12/18/2016.
  */
 
-var app = angular.module('app', ['firebase', 'ui.router', 'ngComponentRouter', 'ngAnimate']);
+var app = angular.module('app', ['firebase', 'ui.router', 'ngComponentRouter',
+    'ngAnimate']);
 
 app.value('$routerRootComponent', 'productApp');
 
@@ -17,105 +18,110 @@ app.run(function ($rootScope, $location) {
     });
 });
 
-app.config(['$stateProvider', function ($stateProvider) {
-    var homeState = {
-        name: 'home',
-        url: '/home',
-        template: '<home expenses-in-order="$resolve.expensesInOrder" categories="$resolve.categories"></home>',
-        resolve: {
-            expensesInOrder: function (expenseList, fbRef, auth) {
-                return auth.$requireAuth().then(function () {
-                    var query = fbRef.getExpensesRef().orderByChild('date');
-                    return expenseList(query).$loaded();
-                })
-            },
-            categories: function ($firebaseArray, fbRef, auth) {
-                return auth.$requireAuth().then(function () {
+app.config(['$stateProvider', '$urlRouterProvider',
+    function ($stateProvider, $urlRouterProvider) {
+
+        var homeState = {
+            name: 'home',
+            url: '/home',
+            template: '<home expenses-in-order="$resolve.expensesInOrder" ' +
+                        'categories="$resolve.categories"></home>',
+            resolve: {
+                expensesInOrder: function (expenseList, fbRef, auth) {
+                    return auth.$requireAuth().then(function () {
+                        var query = fbRef.getExpensesRef().orderByChild('date');
+                        return expenseList(query).$loaded();
+                    })
+                },
+                categories: function ($firebaseArray, fbRef, auth) {
+                    return auth.$requireAuth().then(function () {
+                        var query = fbRef.getCategoriesRef().orderByChild('name');
+                        return $firebaseArray(query).$loaded();
+                    });
+                }
+            }
+        };
+
+        var categoriesState = {
+            name: 'categories',
+            url: '/categories',
+            template: '<category-list categories="$resolve.categories"></category-list>',
+            resolve: {
+                categories: function (fbRef, $firebaseArray, auth) {
                     var query = fbRef.getCategoriesRef().orderByChild('name');
-                    return $firebaseArray(query).$loaded();
-                });
+                    return auth.$requireAuth().then(function () {
+                        return $firebaseArray(query).$loaded();
+                    })
+                }
             }
-        }
-    };
+        };
 
-    var loginState = {
-        name: 'login',
-        url: '/login',
-        template: '<login current-auth="$resolve.currentAuth"></login>',
-        resolve: {
-            currentAuth: function (auth) {
-                return auth.$waitForAuth();
+        // ng 1.5 components
+        var productState = {
+            name: 'product',
+            url: '/product',
+            template: '<product-list products="$resolve.products"></product-list>',
+            resolve: {
+                products: function (fbRef, $firebaseArray) {
+                    return $firebaseArray(fbRef.getProductsRef()).$loaded();
+                }
             }
-        }
-    };
+        };
 
-    // this state does not have a view
-    var logoutState = {
-        name: 'logout',
-        url: '/logout',
-        template: '<logout></logout>'
-    };
-
-    var portalState = {
-        name: 'portal',
-        url: '/portal',
-        template: '<portal></portal>',
-        resolve: {
-            currentAuth: function (auth) {
-                // will throw a '$routeChangeError', not working though.
-                // I wonder if it's throwing this error.
-                return auth.$requireAuth()
+        var loginState = {
+            name: 'login',
+            url: '/login',
+            template: '<login current-auth="$resolve.currentAuth"></login>',
+            resolve: {
+                currentAuth: function (auth) {
+                    return auth.$waitForAuth();
+                }
             }
-        }
-    };
+        };
 
-    var userprefState = {
-        name: 'userpref',
-        url: '/userprefs',
-        template: '<user-prefs user-prefs="$resolve.userPrefs"></user-prefs>',
-        resolve: {
-            userPrefs: function (fbRef, $firebaseObject, auth) {
-                // this promise chain checks that the user is logged in and it gathers the data.
-                return auth.$requireAuth().then(function () {
-                    return $firebaseObject(fbRef.getPreferenceRef()).$loaded();
-                });
+        // this state does not have a view
+        var logoutState = {
+            name: 'logout',
+            url: '/logout',
+            template: '<logout></logout>'
+        };
+
+        var portalState = {
+            name: 'portal',
+            url: '/portal',
+            template: '<portal></portal>',
+            resolve: {
+                currentAuth: function (auth) {
+                    // will throw a '$routeChangeError', not working though.
+                    // I wonder if it's throwing this error.
+                    return auth.$requireAuth()
+                }
             }
-        }
-    };
+        };
 
-    var categoriesState = {
-        name: 'categories',
-        url: '/categories',
-        template: '<category-list categories="$resolve.categories"></category-list>',
-        resolve: {
-            categories: function (fbRef, $firebaseArray, auth) {
-                var query = fbRef.getCategoriesRef().orderByChild('name');
-                return auth.$requireAuth().then(function () {
-                    return $firebaseArray(query).$loaded();
-                })
+        var userprefState = {
+            name: 'userpref',
+            url: '/userprefs',
+            template: '<user-prefs user-prefs="$resolve.userPrefs"></user-prefs>',
+            resolve: {
+                userPrefs: function (fbRef, $firebaseObject, auth) {
+                    // this promise chain checks that the user is logged in and it gathers the data.
+                    return auth.$requireAuth().then(function () {
+                        return $firebaseObject(fbRef.getPreferenceRef()).$loaded();
+                    });
+                }
             }
-        }
-    };
+        };
 
-    var productState = {
-        name: 'product',
-        url: '/product',
-        template: '<product-list products="$resolve.products"></product-list>',
-        resolve: {
-            products: function (fbRef, $firebaseArray) {
-                return $firebaseArray(fbRef.getProductsRef()).$loaded();
-            }
-        }
-    };
-
-    $stateProvider
-        .state(homeState)
-        .state(loginState)
-        .state(logoutState)
-        .state(portalState)
-        .state(userprefState)
-        .state(categoriesState)
-        .state(productState);
-}]);
+        $stateProvider
+            .state(homeState)
+            .state(loginState)
+            .state(logoutState)
+            .state(portalState)
+            .state(userprefState)
+            .state(categoriesState)
+            .state(productState);
+        $urlRouterProvider.otherwise('/home')
+    }]);
 
 //\\

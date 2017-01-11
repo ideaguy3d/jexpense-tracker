@@ -3,7 +3,7 @@
  */
 
 angular.module('app').component('expenseList', {
-    templateUrl: '/app/expenses/expenses.html',
+    templateUrl: '/app/expenses/expense.list.html',
     bindings: {
         expenses: '=expenseData',
         selectExpense: '&'

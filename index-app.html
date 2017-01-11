@@ -33,7 +33,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="/#/">
+				<a href="" ui-sref="home">
 					<img src="img/logo/j3d.png" alt="logo">
 				</a>
 			</div>
@@ -57,8 +57,24 @@
 <!-- sub-nav will always appear at the bottom left corner for now -->
 <sub-nav></sub-nav>
 
-<!-- ng component router -->
+<!-- ng component router
 <product-app></product-app>
+-->
+
+<!-- HomeLandingCtrl div shows up no which state app is in
+<div ng-controller="HomeLandingCtrl">
+	<div class="container" ng-if="showArea">
+		<div class="jumbotron text-center">
+			<h1><i class="fa fa-android fa-5x"></i></h1>
+			<button class="btn btn-primary btn-lg"
+			        ui-sref="home" ng-click="hideArea()">See Expenses</button>
+			<button class="btn btn-primary btn-lg"
+			        ui-sref="categories" ng-click="hideArea()">See Categories</button>
+		</div>
+	</div>
+</div>
+-->
+
 
 <!-- ng ui router -->
 <div class="container-fluid">
@@ -79,7 +95,7 @@
 
 <!-- Custom JavaScript -->
 <script src="app/app.js"></script>
-<script src="app/home/home.js"></script>
+<script src="app/home/home.com.js"></script>
 <script src="app/firebaseUrl.js"></script>
 <script src="app/security/auth.js"></script>
 <script src="app/security/logout.js"></script>
@@ -92,14 +108,15 @@
 <script src="app/userprefs/userprefs.js"></script>
 <script src="app/categories/categories.js"></script>
 <script src="app/expenses/expense.serv.js"></script>
-<script src="app/expenses/expenses.js"></script>
-<script src="app/expenses/editExpense.js"></script>
+<script src="app/expenses/expense.list.com.js"></script>
+<script src="app/expenses/edit.expense.com.js"></script>
 <script src="app/products/product.list.com.js"></script>
 <script src="app/products/product.rating.com.js"></script>
 <script src="app/products/product.app.com.js"></script>
 <script src="app/products/product.detail.com.js"></script>
 <script src="app/products/accordian.com.js"></script>
 <script src="app/skill_check/skill.check.com.js"></script>
+<script src="app/home/home.landing.ctrl.js"></script>
 
 
 </body>
