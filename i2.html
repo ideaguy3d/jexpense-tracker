@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app2">
+<head>
+    <meta charset="UTF-8">
+    <title>julius3d.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <!-- css libraries -->
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="app/bower_components/animate.css/animate.min.css">
+    
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/julius-app.css">
+</head>
+
+
+<body>
+
+<header>
+    <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button class="collapsed navbar-toggle" data-target="#top-nav" data-toggle="collapse">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a href="#top"><img src="img/logo/j3d.png" alt="logo"></a>
+            </div>
+            <div id="top-nav" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/home">Home</a></li>
+                    <li><a href="#/preferences">Preferences</a></li>
+                    <li><a href="#/products">Products</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid">
+    <ng-view></ng-view>
+</div>
+
+
+
+
+
+<!-- JavaScript Frameworks & Libraries -->
+<script src="vendor/jq2/jquery-2.1.1.min.js"></script>
+<script src="vendor/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-animate.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-route.min.js"></script>
+<script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+<script type="text/javascript" src="https://cdn.firebase.com/libs/angularfire/1.1.4/angularfire.min.js"></script>
+
+
+<!-- Custom JavaScript -->
+<script src="app2/app2.js"></script>
+<script src="app2/categories/categories.com.js"></script>
+<script src="app2/preferences/preferences.com.js"></script>
+<script src="app2/products/products.com.js"></script>
+<!-- <script src="app2/"></script> -->
+
+
+</body>
+</html>
