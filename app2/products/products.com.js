@@ -9,10 +9,19 @@
     app.component('products', {
         templateUrl: 'app2/products/products.html',
         bindings: {
-
+            productExpenses: '=',
+            categories: '='
         },
         controller: function(){
+            var m = this;
 
+            m.editExpense = function(expense) {
+                m.selectedCurrent = expense;
+            };
+
+            m.updateExpense = function(){
+                m.productExpenses.$save(m.selectedCurrent);
+            };
         }
     });
 }());

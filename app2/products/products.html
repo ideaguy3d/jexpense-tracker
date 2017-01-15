@@ -1,3 +1,10 @@
-<table>
+<div class="container">
+	<h1 class="page-header">
+		Product total: <small>{{ $ctrl.productExpenses.getTotal() | currency }}</small>
+	</h1>
 	
-</table>
+	<expense-list expenses-data="$ctrl.productExpenses"
+	              selected-expense="$ctrl.editExpense(expense)"></expense-list>
+	
+	<!--<edit-expense></edit-expense>-->
+</div>

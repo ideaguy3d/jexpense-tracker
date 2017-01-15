@@ -14,7 +14,7 @@ angular.module('app').component('expenseList', {
         };
 
         this.clickRow = function(expense){
-            this.selectExpense({expense: expense});
+            this.selectExpense( { expense: expense } );
         };
     }
 });

@@ -1,0 +1,16 @@
+<table>
+	<thead>
+		<th width="50%"></th>
+		<th width="25%"></th>
+		<th width="15%"></th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="prod in $ctrl.expensesData">
+			<td>{{ prod.description }}</td>
+			<td>{{ prod.amount | currency }}</td>
+			<td>
+				<i class="fa fa-toggle-on"></i>
+			</td>
+		</tr>
+	</tbody>
+</table>
