@@ -25,7 +25,6 @@ angular.module('app').component('editExpense', {
                 this.selectedCategory =
                     this.categories[this.categories.$indexFor(newData.category.id)];
                 this.payee = newData.payee;
-                console.log("j - in if(!!newData){} block");
             }
         }).bind(this)); // Don't forget to .bind(this) $ctrl's scope.
         

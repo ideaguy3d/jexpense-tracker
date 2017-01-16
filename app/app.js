@@ -51,7 +51,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     var query = fbRef.getCategoriesRef().orderByChild('name');
                     return auth.$requireAuth().then(function () {
                         return $firebaseArray(query).$loaded();
-                    })
+                    });
                 }
             }
         };

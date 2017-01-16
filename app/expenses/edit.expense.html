@@ -8,10 +8,10 @@
     </select>
     <input type="text" class="form-control" placeholder="Amount" ng-model="$ctrl.amount">
 
-    <button class="btn btn-primary btn-lg" ng-show="$ctrl.editing"
+    <button class="btn btn-primary btn-sm" ng-show="$ctrl.editing"
             ng-click="$ctrl.save()">Save</button>
-    <button class="btn btn-danger btn-lg" ng-show="$ctrl.editing"
+    <button class="btn btn-danger btn-sm" ng-show="$ctrl.editing"
             ng-click="$ctrl.cancel()">Cancel</button>
-    <button class="btn btn-warning btn-lg" ng-show="!$ctrl.editing"
+    <button class="btn btn-warning btn-sm" ng-show="!$ctrl.editing"
             ng-click="$ctrl.create()">Create</button>
 </form>

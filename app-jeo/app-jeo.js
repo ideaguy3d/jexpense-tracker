@@ -24,15 +24,14 @@
                 url: '/categories',
                 template: '<categories-list categories="$resolve.categories"></categories-list>',
                 resolve: {
-                    categories: function(jFirebaseDB, $firebaseArray){
-                        console.log("ello ello... ja");
+                    categories: function(jFirebaseDB, $firebaseArray) {
                         var categoryData = $firebaseArray(jFirebaseDB.child('categories')).$loaded();
-                        console.log("ja: zCategory node");
                         console.log(categoryData);
                         return categoryData;
                     }
                 }
             };
+
             console.log("outside of categories state");
 
             var preferencesState = {

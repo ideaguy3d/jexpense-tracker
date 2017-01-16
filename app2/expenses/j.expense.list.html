@@ -5,11 +5,13 @@
 		<th width="15%"></th>
 	</thead>
 	<tbody>
-		<tr ng-repeat="prod in $ctrl.expensesData">
+		<tr ng-repeat="prod in $ctrl.expensesData" ng-mouseenter="hovering = true"
+				ng-mouseleave="hovering=false" ng-click="$ctrl.userSelectedExpense(prod)">
 			<td>{{ prod.description }}</td>
 			<td>{{ prod.amount | currency }}</td>
 			<td>
-				<i class="fa fa-toggle-on"></i>
+				<i class="fa fa-remove hover-anim hover-fade-in-anim" ng-show="hovering" ng-mouseleave="delHover = false"
+				ng-mouseenter="delHover = true" ng-class="{'hover-delete': delHover}"></i>
 			</td>
 		</tr>
 	</tbody>

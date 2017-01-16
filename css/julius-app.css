@@ -2,15 +2,37 @@ header {
     margin-bottom: 50px;
 }
 
+td {
+    padding: 1.1rem;
+}
+
 .j-active {
     font-weight: bold;
     cursor: pointer;
     border: solid cornflowerblue 2px;
 }
 
-.hover-delete {
-    transform: scale(1.2,1.2);
+.hover-fade-in-anim {
+    -webkit-transition: all linear 0.5s;
+    transition:linear all 0.5s;
+}
+
+.hover-fade-in-anim.ng-hide {
+    opacity: 0;
+}
+
+.hover-anim.hover-delete {
+    transform: scale(1.9,1.9);
     color: indianred;
+    -webkit-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+}
+
+.hover-delete {
+    transform: scale(1.9,1.9);
+    color: indianred;
+    -webkit-transition: all linear 0.2s;
+    transition: all linear 0.2s;
 }
 
 .pointable {
@@ -44,11 +66,6 @@ jnav {
 
 .jwelcome #jwelcome:hover {
     color: cornflowerblue;
-}
-
-.hover-delete {
-    transform: scale(1.2, 1.2);
-    color: indianred;
 }
 
 .j-stars {

@@ -3,13 +3,14 @@
  */
 
 angular.module('app').factory('expenseList', ['$firebaseArray',
-    function($firebaseArray){
+    function($firebaseArray) {
         var ExpenseList = $firebaseArray.$extend({
             getTotal: function(){
                 var total = 0;
                 angular.forEach(this.$list, function(rec){
                     total += rec.amount;
                 });
+
                 return total;
             }
         });

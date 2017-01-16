@@ -7,12 +7,12 @@
     var app = angular.module('app');
 
     app.constant('FirebaseUrl', 'https://jeo-parody.firebaseio.com/')
-        .service('joeRootRef', ['FirebaseUrl', Firebase]);
+        .service('jeoRootRef', ['FirebaseUrl', Firebase]);
 
-    app.component('joeHack', {
+    app.component('jeoHack', {
        templateUrl: 'app-joe/joe-app.html',
-        controller: function (joeRootRef, $firebaseArray) {
-            this.joe1 = $firebaseArray(joeRootRef.child("board"));
+        controller: function (jeoRootRef, $firebaseArray) {
+            this.joe1 = $firebaseArray(jeoRootRef.child("board"));
 
             console.log("joe: controller invoked");
             console.log(this.joe1);
